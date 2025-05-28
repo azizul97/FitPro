@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitPro - Fitness Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-dumbbell"></i>
+                <h1>Fit<span>Pro</span></h1>
+            </div>
+            <p class="tagline">Track your fitness journey with precision and motivation</p>
+        </header>
+
+        <div class="tabs">
+            <div class="tab active" data-tab="dashboard">Dashboard</div>
+            <div class="tab" data-tab="workout">Workout</div>
+            <div class="tab" data-tab="nutrition">Nutrition</div>
+            <div class="tab" data-tab="water">Hydration</div>
+        </div>
+
+        <!-- Dashboard Tab -->
+        <div class="tab-content active" id="dashboard">
+            <div class="dashboard">
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-chart-line"></i> Today's Summary</h2>
+                    </div>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-value" id="total-workouts">0</div>
+                            <div class="stat-label">Workouts</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="total-calories">0</div>
+                            <div class="stat-label">Calories</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="total-water">0</div>
+                            <div class="stat-label">Water (ml)</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="total-protein">0</div>
+                            <div class="stat-label">Protein (g)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-glass-whiskey"></i> Hydration Tracker</h2>
+                    </div>
+                    <div class="water-tracker">
+                        <div class="water-cup">
+                            <div class="water-fill" id="water-fill" style="height: 30%;"></div>
+                        </div>
+                        <div class="water-controls">
+                            <button class="water-btn" id="add-100ml">+100</button>
+                            <button class="water-btn" id="add-250ml">+250</button>
+                            <button class="water-btn" id="add-500ml">+500</button>
+                        </div>
+                        <div class="water-stats">
+                            <p>Today: <span id="current-water">0</span> ml / <span id="water-goal">2000</span> ml</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2><i class="fas fa-history"></i> Recent Activity</h2>
+                </div>
+                <div class="log-container" id="recent-activity">
+                    <!-- Recent activity will be populated here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Workout Tab -->
+        <div class="tab-content" id="workout">
+            <div class="dashboard">
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-running"></i> Log Workout</h2>
+                    </div>
+                    <form id="workout-form">
+                        <div class="form-group">
+                            <label for="exercise">Exercise</label>
+                            <select id="exercise" required>
+                                <option value="">Select Exercise</option>
+                                <option value="Bench Press">Bench Press</option>
+                                <option value="Squats">Squats</option>
+                                <option value="Deadlift">Deadlift</option>
+                                <option value="Shoulder Press">Shoulder Press</option>
+                                <option value="Pull-ups">Pull-ups</option>
+                                <option value="Bicep Curls">Bicep Curls</option>
+                                <option value="Leg Press">Leg Press</option>
+                                <option value="Lunges">Lunges</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="sets">Sets</label>
+                            <input type="number" id="sets" min="1" max="20" placeholder="Number of sets" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="reps">Reps per Set</label>
+                            <input type="number" id="reps" min="1" max="50" placeholder="Reps per set" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="weight">Weight (kg)</label>
+                            <input type="number" id="weight" min="0" step="0.5" placeholder="Weight used" required>
+                        </div>
+                        
+                        <button type="submit">Add Workout</button>
+                    </form>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-dumbbell"></i> Today's Workouts</h2>
+                    </div>
+                    <div class="log-section">
+                        <div class="log-container" id="workout-log">
+                            <!-- Workout logs will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nutrition Tab -->
+        <div class="tab-content" id="nutrition">
+            <div class="dashboard">
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-utensils"></i> Log Nutrition</h2>
+                    </div>
+                    <form id="nutrition-form">
+                        <div class="form-group">
+                            <label for="food">Food Item</label>
+                            <input type="text" id="food" placeholder="E.g. Grilled Chicken Salad" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="calories">Calories</label>
+                            <input type="number" id="calories" min="0" placeholder="Calories" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="protein">Protein (g)</label>
+                            <input type="number" id="protein" min="0" step="0.1" placeholder="Protein in grams" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="carbs">Carbs (g)</label>
+                            <input type="number" id="carbs" min="0" step="0.1" placeholder="Carbs in grams" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="fat">Fat (g)</label>
+                            <input type="number" id="fat" min="0" step="0.1" placeholder="Fat in grams" required>
+                        </div>
+                        
+                        <button type="submit">Add Food</button>
+                    </form>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-apple-alt"></i> Today's Nutrition</h2>
+                    </div>
+                    <div class="log-section">
+                        <div class="log-container" id="nutrition-log">
+                            <!-- Nutrition logs will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Water Tab -->
+        <div class="tab-content" id="water">
+            <div class="dashboard">
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-tint"></i> Hydration Tracker</h2>
+                    </div>
+                    <div class="water-tracker">
+                        <div class="water-cup">
+                            <div class="water-fill" id="water-fill-detail" style="height: 30%;"></div>
+                        </div>
+                        <div class="water-controls">
+                            <button class="water-btn" id="add-100ml-detail">+100</button>
+                            <button class="water-btn" id="add-250ml-detail">+250</button>
+                            <button class="water-btn" id="add-500ml-detail">+500</button>
+                        </div>
+                        <div class="water-stats">
+                            <p>Today: <span id="current-water-detail">0</span> ml / <span id="water-goal-detail">2000</span> ml</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-history"></i> Water Intake Log</h2>
+                    </div>
+                    <div class="log-section">
+                        <div class="log-container" id="water-log">
+                            <!-- Water logs will be populated here -->
+                        </div>
+                    </div>
+                    <button class="btn-accent" id="reset-water">Reset Daily Water</button>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>FitPro Fitness Tracker &copy; 2025 | Track Your Progress, Transform Your Body</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
