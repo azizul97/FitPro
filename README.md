@@ -1,6 +1,9 @@
 # FitPro- Fitness Tracker Application
 FitPro is a comprehensive web-based fitness tracker designed for gym-goers to monitor their workouts, nutrition, and hydration. The application features an intuitive interface with data persistence using local storage.
 
+Preview:
+![fitpro](https://github.com/user-attachments/assets/a5d1ff97-7b86-4a4a-9c6e-a317f92a67ac)
+
 ## Features
 
 - **Workout Tracking**: Log sets, reps, and weight for various exercises
